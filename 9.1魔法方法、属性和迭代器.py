@@ -108,3 +108,5 @@ r.size = 150,100
 print r.width
 print r.height
 #9.5.2静态方法和类成员方法
+
+#Test
