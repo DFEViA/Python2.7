@@ -88,7 +88,7 @@ sb.eat()
 #9.5 属性
 #Python能隐藏访问器方法，让所有特性看起来一样。这些通过访问器定义的特性被称为属性。
 #9.5.1property函数的使用
-__metaclass__ = type
+'''__metaclass__ = type
 class Rectangle:
     def __init__(self):
         self.width = 0
@@ -106,5 +106,80 @@ print r.size
 
 r.size = 150,100
 print r.width
-print r.height
-#9.5.2静态方法和类成员方法
+print r.height'''
+#9.5.2静态方法和类成员方法,在Python中并不是向来很重要，主要的原因是大部分情况下可以使用函数或者绑定方法代替。
+#静态方法的定义没有self参数，且能够被类本身直接调用.
+#类方法在定义时需要名为cls的类似于self参数，类成员方法可以直接用类的具体对象调用。但cls参数是自动被绑定到类的。
+__metaclass__ = type
+class MyClass:
+    def smeth():
+        print 'This is a static method'
+    smeth = staticmethod(smeth)
+
+    def cmeth(cls):
+        print 'This is a class method of',cls
+    cmeth = classmethod(cmeth)
+#多个装饰器在应用时的顺序与指定顺序相反
+__metaclass__ = type
+class MyClass:
+    @staticmethod#装饰器
+    def smeth():
+        print 'This is a static method'
+
+    @classmethod
+    def cmeth(cls):
+        print 'This is a class method of',cls
+#注意例子中没有实例化类
+MyClass().smeth()
+MyClass().cmeth()
+
+#9.5.3 __getattr__、__setatrr__和它的朋友们
+#拦截（intercept）对象的所有特性访问时可能的
+#不太懂，细究
+
+
+#9.6迭代器
+#__iter__，这个方法是迭代器规则的基础
+#9.6.1迭代器规则
+#迭代器的意思是重复做一些事很多次，实际上也能对其他对象进行迭代：实现__iter__方法的对象。
+'''class Fibs:
+    def __init__(self):
+        self.a = 0
+        self.b = 0
+    def next(self):
+        self.a,self.b = self.b,self.a+self.b
+        return self.a
+    def __iter__(self):
+        return self
+fibs = Fibs()
+
+for f in fibs:
+    if f > 1000:
+        print f
+        break'''
+#9.6.2从迭代得到序列
+
+class TestIterrator:
+    value = 0
+    def next(self):
+        self.value += 1
+        if self.value > 10 : raise StopIteration
+        return self.value
+    def __iter__(self):
+        return self
+ti = TestIterrator()
+print list(ti)
+
+#9.7生成器
+#生成器是一种用普通的函数语法定义的迭代器。
+#9.7.1创建生成器
+#任何包含yield语句的函数称为生成器。
+def flatten(nested):
+    for sublist in nested:
+        for element in sublist:
+            yield element
+nested = [[1,2],[3,4],[5]]
+for num in flatten(nested):
+    print num
+
+#9.7.2递归生成器
