@@ -183,3 +183,23 @@ for num in flatten(nested):
     print num
 
 #9.7.2递归生成器
+#后续再看
+
+#9.7.3通用生成器
+#生成器的函数和生成器的迭代器。生成器的函数使用def语句定义的，博涵yeild的部分，生成器的迭代器是这个函数返回的部分。
+
+#9.7.4生成器方法
+
+#9.7.5模拟生成器
+
+#9.8八皇后问题
+#9.8.1生成器和回溯
+#9.8.4寻找冲突
+def conflict(state,nextX):
+    nextY = len(state)
+    for i in range(nextY):
+        if abs(state[i]-nextX) in (0, nextY-i):
+            return True
+    return False
+
+#先过后续再看，重点
