@@ -1,28 +1,29 @@
 #!usr/bin/python
 # -*- coding: UTF-8 -*-
 from math import sqrt
-x=y=[1,2,3]
-z=[1,2,3]
-print x==y
-print x==z
+x = y = [1, 2, 3]
+z = [1, 2, 3]
+print x == y
+print x == z
 print x is y
 print x is z
 
-print  range(1,100)
+print range(1, 100)
 
-names = ['a','b','c','d']
-ages = [1,2,3,4]
-print zip(names,ages)
+names = ['a', 'b', 'c', 'd']
+ages = [1, 2, 3, 4]
+print zip(names, ages)
 
 while True:
     word = raw_input('Please enter a word:')
-    if not word.strip():break
-    #处理word：
+    if not word.strip():
+        break
+    # 处理word：
     print 'The word was' + word
 
-print range(99,80,-1)
+print range(99, 80, -1)
 
-for n in range(99,80,-1):
+for n in range(99, 80, -1):
     root = sqrt(n)
     if root == int(root):
         print n
@@ -30,10 +31,10 @@ for n in range(99,80,-1):
     else:
         print "Didn't find it!"
 
-#列表推导式-轻量级循环
-print [x*x for x in range(10)]
-print [x*x for x in range(10) if x %3 == 0]
-print [(x,y) for x in range(3) for y in range(3)]
+# 列表推导式-轻量级循环
+print[x * x for x in range(10)]
+print[x * x for x in range(10) if x % 3 == 0]
+print[(x, y) for x in range(3) for y in range(3)]
 
 '''#5.7.1什么都没发生 pass
 if name == 'Ralph Auldus Melish'
