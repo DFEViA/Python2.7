@@ -50,5 +50,7 @@ pprint.pprint(sys.path)
 # 10.2.1模块中有什么
 # 1.使用dir 查看
 import copy
+# 这个列表推导式是个包含dir(copy)中所有不以下划线开头的名字
 print[n for n in dir(copy) if not n.startswith('_')]
 
+# 2.__all__变量
