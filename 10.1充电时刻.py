@@ -48,5 +48,7 @@ pprint.pprint(sys.path)
 '''
 # 10.2探究模块
 # 10.2.1模块中有什么
-# 1.使用dir
+# 1.使用dir 查看
+import copy
+print[n for n in dir(copy) if not n.startswith('_')]
 
