@@ -53,8 +53,34 @@ import copy
 # 这个列表推导式是个包含dir(copy)中所有不以下划线开头的名字
 print[n for n in dir(copy) if not n.startswith('_')]
 
-# 2.__all__变量 设定all会把其他程序不需要或不想要的变量、函数和类，过滤出去，如果不设定all。用import *语句默认将会输出模块中素有不以下划线开头的全局名称。
+# 2.__all__变量 设定all会把其他程序不需要或不想要的变量、函数和类，过滤出去，如果不设定all。用import
+# *语句默认将会输出模块中素有不以下划线开头的全局名称。
 print copy.__all__
 
-#10.2.2 用help获取帮助
+# 10.2.2 用help获取帮助
+# help(copy.copy)
 
+print copy.copy.__doc__  # doc文档字符串
+
+# help(copy)
+
+# 10.2.3 文档
+
+# 10.2.4 使用源代码
+print copy.__file__  # 如果文件名以.pyc结尾，只要查看相应的以.py结尾的文件即可
+
+# 10.3 标准库：一些最爱
+# sys.argv函数 描述：命令行参数，包括脚本名称
+
+# 10.3.2 os
+# os模块为你提供了访问多个操作系统服务功能
+
+# 10.3.4 集合、堆和双端队列
+print set(range(10))
+print set([1, 2, 1, 2, 3, 4, 5, 5, 6])  # 集合元素是唯一的，无序的
+# 除了检查成员资格外，还可以使用标准的集合操作，比如求并集和交集，可以使用方法，也可以使用对整数进行位操作时使用的操作。
+mySets = []
+for i in range(10):
+    mySets.append(set(range(i, i + 5)))
+print reduce(set.union, mySets)
+# 集合是可变的，所有不能用做字典中的键
