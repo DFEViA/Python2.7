@@ -53,4 +53,8 @@ import copy
 # 这个列表推导式是个包含dir(copy)中所有不以下划线开头的名字
 print[n for n in dir(copy) if not n.startswith('_')]
 
-# 2.__all__变量
+# 2.__all__变量 设定all会把其他程序不需要或不想要的变量、函数和类，过滤出去，如果不设定all。用import *语句默认将会输出模块中素有不以下划线开头的全局名称。
+print copy.__all__
+
+#10.2.2 用help获取帮助
+
