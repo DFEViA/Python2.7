@@ -83,4 +83,9 @@ mySets = []
 for i in range(10):
     mySets.append(set(range(i, i + 5)))
 print reduce(set.union, mySets)
-# 集合是可变的，所有不能用做字典中的键
+# 集合是可变的，所有不能用做字典中的键 另一个问题集合本身只能包含不可变值，所以也就不能包含其他集合
+a = set()
+b = set()
+a.add(frozenset(b))  # frozenset构造函数创建给定集合的副本，不管是将集合作为其他集合成员还是字典的键
+
+# 堆（heap），他是优先队列的一种。优先队列能够以人任意顺序增加对象，并且能在任何时间（可能在增加对象的同时）找到（也可能移除）最小的元素。
