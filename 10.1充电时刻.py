@@ -89,3 +89,58 @@ b = set()
 a.add(frozenset(b))  # frozenset构造函数创建给定集合的副本，不管是将集合作为其他集合成员还是字典的键
 
 # 堆（heap），他是优先队列的一种。优先队列能够以人任意顺序增加对象，并且能在任何时间（可能在增加对象的同时）找到（也可能移除）最小的元素。
+# heappush函数用于增加堆的项。
+from heapq import *
+from random import shuffle  # shuffle()函数将序列的所有元素随机排序
+data = range(10)
+shuffle(data)
+heap = []
+for n in data:
+    heappush(heap, n)
+print heap
+
+heappush(heap, 0.5)
+print heap  # 他们虽然不是按照严格排序的，但是也有规则的，这个特性称为堆属性
+
+print heappop(heap)  # 将堆中最小的元素弹出，一般来说都是在索引0处的元素
+print heappop(heap)
+print heappop(heap)
+print heappop(heap)  # 因为heappop在“幕后”会做一些精巧的位移操作
+print heap
+
+# heapify函数使用任意列表作为参数，并且通过尽肯能少的位移操作，将其转换为合法的堆
+heap = [5, 8, 0, 3, 6, 1, 4, 2]
+heapify(heap)
+print heap
+
+# heapreplace函数并不像其他函数那么常用。它弹出堆的最小元素，并且将新元素推入。
+heapreplace(heap, 0.5)
+print heap
+heapreplace(heap, 10)
+print heap # 堆算法更快而且更有效地使用内存（更易用）
+
+# 3.双端队列（以及其他集合类型）在需要按照元素增加的顺序来移除元素时非常有用。
+from collections import deque
+q = deque(range(5))
+q.append(5)
+q.appendleft(6)
+print q
+
+q.pop()# 跑出右边的元素
+q.popleft()# 双端队列好用的原因是它能够有效地在开头（左侧）增加和弹出元素，这是在列表中无法实现的。
+print q
+
+q.rotate(3)# 右移三个元素
+print q
+q.rotate(-1)# 左移一个元素
+print q
+
+# 10.3.5 time
+# time模块
+# 
+
+
+
+
+
+
