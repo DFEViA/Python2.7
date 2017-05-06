@@ -117,7 +117,7 @@ print heap
 heapreplace(heap, 0.5)
 print heap
 heapreplace(heap, 10)
-print heap # 堆算法更快而且更有效地使用内存（更易用）
+print heap  # 堆算法更快而且更有效地使用内存（更易用）
 
 # 3.双端队列（以及其他集合类型）在需要按照元素增加的顺序来移除元素时非常有用。
 from collections import deque
@@ -126,21 +126,31 @@ q.append(5)
 q.appendleft(6)
 print q
 
-q.pop()# 跑出右边的元素
-q.popleft()# 双端队列好用的原因是它能够有效地在开头（左侧）增加和弹出元素，这是在列表中无法实现的。
+q.pop()  # 跑出右边的元素
+q.popleft()  # 双端队列好用的原因是它能够有效地在开头（左侧）增加和弹出元素，这是在列表中无法实现的。
 print q
 
-q.rotate(3)# 右移三个元素
+q.rotate(3)  # 右移三个元素
 print q
-q.rotate(-1)# 左移一个元素
+q.rotate(-1)  # 左移一个元素
 print q
 
 # 10.3.5 time
 # time模块
-# 
+import time
+print time.asctime()  # 将时间元组转换为字符串
+print time.time()
 
-
-
-
-
+# 10.3.6 random
+#random 模块包括返回随机数的函数，可用于模拟或者用户任何产生随机输出的程序，注这里都是伪随机数，如果需要真的随机性，应该使用os模块的urandom函数。random模块内的SystemRandom类也是基于用猴子那个功能，可以让数据接近真正的随机性
+import random
+print random.random() # 返回大于等于0小于1之间的随机实数n
+'''
+getrandbits(n)          以长整型形式返回n个随机位
+uniform（a,b）			返回随机实数n，其中a <= n <b
+randrange([start],stop,[step]) 返回range（start,stop,step）中的随机数
+choice（seq）            从序列seq中返回随意元素
+shuffle（seq[,random]）  原地指定序列seq
+sample(seq,n)           从序列seq中选择nge随机且独立的元素
+'''
 
