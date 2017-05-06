@@ -142,9 +142,10 @@ print time.asctime()  # 将时间元组转换为字符串
 print time.time()
 
 # 10.3.6 random
-#random 模块包括返回随机数的函数，可用于模拟或者用户任何产生随机输出的程序，注这里都是伪随机数，如果需要真的随机性，应该使用os模块的urandom函数。random模块内的SystemRandom类也是基于用猴子那个功能，可以让数据接近真正的随机性
+# random
+# 模块包括返回随机数的函数，可用于模拟或者用户任何产生随机输出的程序，注这里都是伪随机数，如果需要真的随机性，应该使用os模块的urandom函数。random模块内的SystemRandom类也是基于用猴子那个功能，可以让数据接近真正的随机性
 import random
-print random.random() # 返回大于等于0小于1之间的随机实数n
+print random.random()  # 返回大于等于0小于1之间的随机实数n
 '''
 getrandbits(n)          以长整型形式返回n个随机位
 uniform（a,b）			返回随机实数n，其中a <= n <b
@@ -153,4 +154,3 @@ choice（seq）            从序列seq中返回随意元素
 shuffle（seq[,random]）  原地指定序列seq
 sample(seq,n)           从序列seq中选择nge随机且独立的元素
 '''
-
