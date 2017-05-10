@@ -152,5 +152,52 @@ uniform（a,b）			返回随机实数n，其中a <= n <b
 randrange([start],stop,[step]) 返回range（start,stop,step）中的随机数
 choice（seq）            从序列seq中返回随意元素
 shuffle（seq[,random]）  原地指定序列seq
-sample(seq,n)           从序列seq中选择nge随机且独立的元素
+sample(seq,n)           从序列seq中选择n个随机且独立的元素
 '''
+from random import *
+from time import *
+date1 = (2008, 1, 1, 0, 0, 0, -1, -1, -1)
+time1 = mktime(date1)
+date2 = (2009, 1, 1, 0, 0, 0, -1, -1, -1)
+time2 = mktime(date2)
+random_time = uniform(time1, time2)
+print asctime(localtime(random_time))
+
+# 例用户选择投掷的骰子数以及每个骰子具有的面数
+'''from random import randrange
+num = input('How many dice?')
+sides = input('How many sides per die?')
+sum = 0
+for i in range(num): sum += randrange(sides) + 1
+print 'The result is', sum 
+'''
+# 希望程序能够在每次敲击回车的时候都为自己发一张牌，同事还要确保不会获得相同的牌。
+values = range(1,11)+'Jack Queen King'.split()
+suits = 'diamonds clubs hearts spades'.split()
+deck = ['%s of %s' % (v, s) for v in values for s in suits]
+from pprint import pprint
+pprint(deck[:12])
+
+# 打乱顺序
+from random import shuffle
+shuffle(deck)
+pprint(deck[:12]) # 只打印了前12张牌
+
+'''i = 0
+while deck: 
+	i+=1
+	a = raw_input(deck.pop())# 返回了输入的内容，并且将其打印出来
+print i'''
+	
+# 10.3.7 shelve
+# 1 潜在的陷阱 shelve.open函数返回的对象并不是普通的映射是很重要的
+import shelve 
+s = shelve.open('test.dat') 
+s['x'] = ['a','b','c']
+s['x'].append('d') # 'd'被添加到这个副本中，修改的版本还没有被保存
+print s['x']
+
+temp = s['x']
+temp.append('d')
+s['x'] = temp
+print s['x']
