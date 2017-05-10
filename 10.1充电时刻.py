@@ -172,7 +172,7 @@ for i in range(num): sum += randrange(sides) + 1
 print 'The result is', sum 
 '''
 # 希望程序能够在每次敲击回车的时候都为自己发一张牌，同事还要确保不会获得相同的牌。
-values = range(1,11)+'Jack Queen King'.split()
+values = range(1, 11) + 'Jack Queen King'.split()
 suits = 'diamonds clubs hearts spades'.split()
 deck = ['%s of %s' % (v, s) for v in values for s in suits]
 from pprint import pprint
@@ -181,23 +181,23 @@ pprint(deck[:12])
 # 打乱顺序
 from random import shuffle
 shuffle(deck)
-pprint(deck[:12]) # 只打印了前12张牌
+pprint(deck[:12])  # 只打印了前12张牌
 
 '''i = 0
 while deck: 
 	i+=1
 	a = raw_input(deck.pop())# 返回了输入的内容，并且将其打印出来
 print i'''
-	
+
 # 10.3.7 shelve
 # 1 潜在的陷阱 shelve.open函数返回的对象并不是普通的映射是很重要的
-import shelve 
-s = shelve.open('test.dat') 
-s['x'] = ['a','b','c']
-s['x'].append('d') # 'd'被添加到这个副本中，修改的版本还没有被保存
+import shelve
+s = shelve.open('test.dat')
+s['x'] = ['a', 'b', 'c']
+s['x'].append('d')  # 'd'被添加到这个副本中，修改的版本还没有被保存
 print s['x']
 
-temp = s['x']
+temp = s['x']  # 为了正确地使用shelve模块修改的临时对象，必须将临时变量绑定到获得的副本上，并且在它被修改后重新存储这个副本
 temp.append('d')
 s['x'] = temp
 print s['x']
