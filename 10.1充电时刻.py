@@ -169,7 +169,7 @@ num = input('How many dice?')
 sides = input('How many sides per die?')
 sum = 0
 for i in range(num): sum += randrange(sides) + 1
-print 'The result is', sum 
+print 'The result is', sum
 '''
 # 希望程序能够在每次敲击回车的时候都为自己发一张牌，同事还要确保不会获得相同的牌。
 values = range(1, 11) + 'Jack Queen King'.split()
@@ -184,7 +184,7 @@ shuffle(deck)
 pprint(deck[:12])  # 只打印了前12张牌
 
 '''i = 0
-while deck: 
+while deck:
 	i+=1
 	a = raw_input(deck.pop())# 返回了输入的内容，并且将其打印出来
 print i'''
@@ -201,3 +201,44 @@ temp = s['x']  # 为了正确地使用shelve模块修改的临时对象，必须
 temp.append('d')
 s['x'] = temp
 print s['x']
+
+# 10.3.8 re 模块包含对正则表达式的支持
+'''
+1.什么是正则表达式
+正则表达式是可以匹配文本片段的模式。最简单的正则表达式就是普通字符串，可以匹配其自身。
+*通配符. 因为点号只能匹配一个字母，而不是两个或零个；它可以匹配“任何字符串”（除换行符外的任何单个字符），点号就成为通配符。
+*对特殊字符进行转义 在正则表达式中如果将特殊字符作为普通字符使用会遇到问题。本例中可以使用'python\\.org'匹配'python.org'，使用两个反斜线的目的是（1）通过解释器转义；（2）通过re模块转义；
+*字符集 使用中括号括住字符串来创建字符集，字符集可以匹配它所包括的任意字符，注意字符集只能匹配一个这样的字符。为了反转字符集，可以在开头使用^字符，比如'[^abc]'可以匹配任何除了a、b和c之外的字符;
+*选择符和子模式，在字符串的每个字符都各不相同的情况下。只匹配'python'和'perl'，用管道可写成'python|perl'。用子模式前例也可写成'p(ython|erl)'。
+*可选项和重复子模式 在子模式后面加上问号，它就变成了可选项。他可能出现在匹配字符串只能怪，但并非必须的。 原始字符串：r'(http://)?(www\.)?python\.org',有四种匹配结果。
+重复模式：
+（pattern)*:允许模式重复0次或多次；
+（pattern）+：允许模式重复1次或多次；
+（pattern){m,n}:允许模式重复m~n次；
+前面的匹配模式都去匹配整个字符串
+*字符串的开始和结尾 可以使用脱字符（^）标记开始，类似地，字符串结尾用美元符号（$）标识。
+'''
+
+'''
+2.re模块的内容
+re.match('p','python')返回真，在给定字符串的开头匹配正则表达式。
+re.split则允许用任意场地的逗号和空格序列来分割字符串。 如果模式包含小括号，那么括起来的字符组合会散步在分割后的子字符串之间。
+'''
+#re.findall以列表形式返回给定模式的所有匹配项。比如，要在字符串中查找所有的单词
+import re
+pat = '[a-zA-Z]+'
+text = '"Hm... Err -- are you sure?" he said. sounding insecure.'
+print re.findall(pat, text)
+#查找标点符号
+pat = r'[.?\-","]+' # -横线进行了转义，不会将其解释为字符范围的一部分
+print re.findall(pat, text)
+#函数re.sub的作用在于：使用给定的替换内容将匹配模式的子字符串（最左端并且非重叠的子字符串）替换掉。
+pat = '{name}'
+text = 'Dear {name} ...'
+print re.sub(pat, 'Mr. Gumby', text)
+#re.escape是一个很实用的函数，它可以对字符串中所有肯被解释为正则运算符的字符进行专业为应用函数
+print re.escape('www.python.org')
+print re.escape('But where is the ambiguity?')
+
+# 3.匹配对象和组
+
