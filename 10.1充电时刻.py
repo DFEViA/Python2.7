@@ -224,21 +224,20 @@ print s['x']
 re.match('p','python')返回真，在给定字符串的开头匹配正则表达式。
 re.split则允许用任意场地的逗号和空格序列来分割字符串。 如果模式包含小括号，那么括起来的字符组合会散步在分割后的子字符串之间。
 '''
-#re.findall以列表形式返回给定模式的所有匹配项。比如，要在字符串中查找所有的单词
+# re.findall以列表形式返回给定模式的所有匹配项。比如，要在字符串中查找所有的单词
 import re
 pat = '[a-zA-Z]+'
 text = '"Hm... Err -- are you sure?" he said. sounding insecure.'
 print re.findall(pat, text)
-#查找标点符号
-pat = r'[.?\-","]+' # -横线进行了转义，不会将其解释为字符范围的一部分
+# 查找标点符号
+pat = r'[.?\-","]+'  # -横线进行了转义，不会将其解释为字符范围的一部分
 print re.findall(pat, text)
-#函数re.sub的作用在于：使用给定的替换内容将匹配模式的子字符串（最左端并且非重叠的子字符串）替换掉。
+# 函数re.sub的作用在于：使用给定的替换内容将匹配模式的子字符串（最左端并且非重叠的子字符串）替换掉。
 pat = '{name}'
 text = 'Dear {name} ...'
 print re.sub(pat, 'Mr. Gumby', text)
-#re.escape是一个很实用的函数，它可以对字符串中所有肯被解释为正则运算符的字符进行专业为应用函数
+# re.escape是一个很实用的函数，它可以对字符串中所有肯被解释为正则运算符的字符进行专业为应用函数
 print re.escape('www.python.org')
 print re.escape('But where is the ambiguity?')
 
 # 3.匹配对象和组
-
