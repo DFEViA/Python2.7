@@ -110,4 +110,36 @@ f.close()
 
 #11.3.4使用fileinput实现懒惰行迭代
 #在需要对一个非常大的文件进行迭代行的操作时，readlines会占用太多的内存。这个时候可以使用while循环和ReadLine方法来替代。
+'''
+import fileinput
+for line fileinput.input(filename):
+	process(line)# 没有显示的关闭文件的操作，尽管在使用完以后，文件的确应该关闭，但是只要没有向文件写入内容，那么不关闭文件也是可以的。
+'''
+
+# 11.3.5 文件迭代器
+'''
+f = open(filename)
+for line in f:
+	process(line)
+f.close()
+'''
+
+# 主要sys.stdin是可迭代的，就像其他的文件对象。
+'''
+import sys
+for line in sys.stdin:
+	process(line)
+'''
+
+f = open('/Users/xulongwei/Desktop/Python2.7Study/Demo/somefile.txt', 'w')
+f.write('First line\n')
+f.write('Second line\n')
+f.write('Third line\n')
+f.close()
+lines = list(open('/Users/xulongwei/Desktop/Python2.7Study/Demo/somefile.txt'))
+print lines
+first, second, third = open('/Users/xulongwei/Desktop/Python2.7Study/Demo/somefile.txt')
+print first #使用print来向文件写入内容，这会在提供的字符串后面增加新的行
+print second
+print third
 
