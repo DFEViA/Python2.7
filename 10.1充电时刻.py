@@ -240,4 +240,47 @@ print re.sub(pat, 'Mr. Gumby', text)
 print re.escape('www.python.org')
 print re.escape('But where is the ambiguity?')
 
-# 3.匹配对象和组
+'''
+3.匹配对象和组
+组就是放置在圆括号内的子模式。组的序号取决于它左侧的括号数。组0就是整个模式。
+'There (was a (wee) (cooper)) who (lived in Fyfe)'
+re匹配对象的重要方法
+group() 获取给定子模式（组）的匹配项
+start() 返回给定组的匹配项的开始位置
+end() 返回给定组的匹配项的结束位置（和分片一样，不包括组的结束位置）
+span() 返回一个组的开始和结束位置
+方法end类似于start，但是返回结果是结束索引加1
+注意：除了整体匹配外（组0），我们只能使用99个组，范围1~99
+'''
+m = re.match(r'www\.(.*)\..{3}', 'www.python.org')
+print m.group(1)
+print m.start(1)
+print m.end(1)
+print m.span(1)
+
+'''
+4.作为替换的组号和函数
+将函数作为替换内容可以让替换功能变得更加强大，MatchObject将作为函数的唯一参数，返回的字符串将会用做替换内容。
+贪婪模式和非贪婪模式 +？运算符代替了+，意味着模式也会像之前那样对一个或者多个通配符进行匹配，但是它会进行尽可能少的匹配。
+'''
+emphasis_pattern = re.compile(r'''
+	\* #Beginning emphasis tag -- an asterisk
+	(  #Begin group for capturing phrase
+	[^\*]+ #Capture anything except asterisks
+	)  #End group
+	\* #Ending emphasis tag
+		''', re.VERBOSE)
+print re.sub(emphasis_pattern, r'<em>\1</em>', 'Hello, *world*!')
+
+'''
+5.找出Email的发言人
+后续细看
+'''
+'''
+6.模板系统示例
+模板是一种通过放入具体值从而得到某种已完成文本的文件。
+后续细看
+'''
+# 10.3.9其他有趣的标准模块
+# Python类库参考（http://python.org/doc/lib）
+
