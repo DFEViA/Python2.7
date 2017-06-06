@@ -51,3 +51,4 @@ print 'this is an incredible test'.translate(table)
 print 'this is an incredible test'.translate(table, ' ')
 
 # capwords函数再调查
+
