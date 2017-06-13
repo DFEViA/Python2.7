@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 # 7.1对象的魔力

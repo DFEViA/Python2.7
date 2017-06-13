@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 # 10.1模块
@@ -283,4 +283,6 @@ print re.sub(emphasis_pattern, r'<em>\1</em>', 'Hello, *world*!')
 '''
 # 10.3.9其他有趣的标准模块
 # Python类库参考（http://python.org/doc/lib）
+
+
 

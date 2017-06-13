@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 # 6.1 懒惰即美德
 # 计算斐波那契数列

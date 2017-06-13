@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 from math import sqrt
 x = y = [1, 2, 3]

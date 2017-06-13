@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 # 5.1.1 使用逗号输出
 import math as foobar

@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 # 9.2构造方法 当一个对象被创建后，会立即调用构造方法。
